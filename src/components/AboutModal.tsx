@@ -10,7 +10,7 @@ interface AboutModalProps {
 const AboutModal: React.FC<AboutModalProps> = ({ onClose }) => {
   return (
     <Window
-      title="About Habit Harmony"
+      title="About Mind Metrics"
       onClose={onClose}
       style={{
         position: "fixed",
