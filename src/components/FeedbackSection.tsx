@@ -1,3 +1,4 @@
+// src/components/FeedbackSection.tsx
 import React, { useState } from "react";
 import { Habit } from "../types";
 
@@ -34,8 +35,12 @@ const FeedbackSection: React.FC<FeedbackSectionProps> = ({ habits }) => {
           messages: [
             {
               role: "user",
-              content: `You are a life coach AI. The user has these habits:
-${JSON.stringify(habits, null, 2)}.
+              content: `You are a life coach AI. ${
+                habits.length > 0
+                  ? `The user has these habits:
+${JSON.stringify(habits, null, 2)}.`
+                  : "The user has no recorded habits. However, provide general feedback on beneficial habits such as physical activity, journaling, upskilling, healthy lifestyle, and self-improvement."
+              }
 
 Please analyze these habits in the following areas:
 - physical fitness
@@ -117,7 +122,7 @@ Use ** for bold text where appropriate.`,
         backgroundColor: "var(--window-bg)",
         width: "80%",
         maxWidth: "800px",
-        height: feedback.length > 0 ? "auto" : "auto",
+        height: "auto",
         overflowY: feedback.length > 0 ? "auto" : "visible",
       }}
     >
