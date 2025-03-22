@@ -11,7 +11,7 @@ import FeedbackSection from "./components/FeedbackSection";
 import AboutModal from "./components/AboutModal";
 import { Habit } from "./types";
 import { loadHabits } from "./utils";
-import '../src/App.scss'; 
+import "../src/App.scss"; 
 
 const App: React.FC = () => {
   const [habits, setHabits] = useState<Habit[]>(loadHabits());
@@ -20,17 +20,13 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // Check localStorage to determine if the user has seen the About modal
-    const seenAbout = localStorage.getItem('seenAbout') === 'true';
-    
-    // If the user hasn't seen the About modal, show it
+    const seenAbout = localStorage.getItem("seenAbout") === "true";
     if (!seenAbout) {
       setShowAbout(true);
-      // Mark that the user has now seen the About modal
-      localStorage.setItem('seenAbout', 'true');
+      localStorage.setItem("seenAbout", "true");
     }
-  
     // Save the current habits to localStorage
-    localStorage.setItem('habits', JSON.stringify(habits));
+    localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
 
   const handleSaveHabit = (habit: Habit) => {
@@ -114,7 +110,6 @@ const App: React.FC = () => {
           }}
         />
       )}
-      
       {/* Top section with navigation on left and AI feedback on right */}
       <div style={{ display: "flex", width: "100vw", boxSizing: "border-box" }}>
         <div style={{ flex: "0 0 18%", padding: "1rem" }}>
@@ -125,7 +120,15 @@ const App: React.FC = () => {
         </div>
       </div>
       {/* Main content area */}
-      <div style={{ padding: "1rem", maxWidth: "1000px", width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+      <div
+        style={{
+          padding: "1rem",
+          maxWidth: "1000px",
+          width: "100%",
+          margin: "0 auto",
+          boxSizing: "border-box",
+        }}
+      >
         {selectedView === "tracker" ? (
           <HabitTrackerView
             habits={habits}
