@@ -1,0 +1,97 @@
+@import '~@progress/kendo-theme-default/scss/all';
+
+:root {
+  --header-bg-light: #e8e9fd;
+  --header-text-light: #000000;
+  --header-bg-dark: #333333;
+  --header-text-dark: #e9eafb;
+  --footer-bg-light: #d4d9e8;
+  --footer-text-light: #000000;
+  --footer-bg-dark: #151620;
+  --footer-text-dark: #e5e6fd;
+  --primary-color-light: #007acc;
+  --primary-color-dark: #1a73e8;
+}
+
+.light-theme {
+  --header-bg: var(--header-bg-light);
+  --header-text: var(--header-text-light);
+  --footer-bg: var(--footer-bg-light);
+  --footer-text: var(--footer-text-light);
+  --primary-color: var(--primary-color-light);
+}
+
+.dark-theme {
+  --header-bg: var(--header-bg-dark);
+  --header-text: var(--header-text-dark);
+  --footer-bg: var(--footer-bg-dark);
+  --footer-text: var(--footer-text-dark);
+  --primary-color: var(--primary-color-dark);
+}
+
+.app-header {
+  padding: 1rem;
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content {
+  display: flex;
+  width: 100vw;
+}
+
+.view-container {
+  padding: 1rem;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 0; // Ensure this is a valid value
+  width: 100%;
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  text-align: center;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+}
+
+/* AboutModal styles */
+.about-modal {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--window-bg);
+  color: var(--text-color);
+  border: 1px solid var(--window-border);
+  width: 75vw;
+}
+
+.about-modal__close-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.about-modal__close-button {
+  font-size: 1.2rem;
+  color: var(--header-bg);
+}
+
+.about-modal__content {
+  padding: 1rem;
+  padding-top: 1rem;
+}
+
+/* Optional: use this class to style highlighted text */
+.highlight {
+  color: var(--primary-color);
+}
+
+
