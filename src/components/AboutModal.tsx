@@ -21,7 +21,7 @@ const AboutModal: React.FC<AboutModalProps> = ({ onClose }) => {
         color: "var(--text-color)",
         border: `1px solid var(--window-border)`,
         width: "75vw",
-        height: "40vh"
+        height: "60vh"
       }}
     >
       {/* Custom close button in the top-right corner */}

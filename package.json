@@ -71,7 +71,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "netlify deploy --prod",
-    "watch": "chokidar 'src/**/*' -c 'npm run deploy'"
   },
   "eslintConfig": {
     "extends": [

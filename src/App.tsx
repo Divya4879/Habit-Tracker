@@ -29,7 +29,7 @@ const App: React.FC = () => {
   useEffect(() => {
     // Check localStorage to determine if the user has seen the About modal
     const seenAbout = localStorage.getItem('seenAbout') === 'true';
-  
+    
     // If the user hasn't seen the About modal, show it
     if (!seenAbout) {
       setShowAbout(true);
