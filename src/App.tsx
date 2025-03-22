@@ -10,21 +10,13 @@ import CompletionPieChart from "./views/CompletionPieChart";
 import FeedbackSection from "./components/FeedbackSection";
 import AboutModal from "./components/AboutModal";
 import { Habit } from "./types";
-import { loadHabits, saveHabits } from "./utils";
+import { loadHabits } from "./utils";
 import '../src/App.scss'; 
 
-
- 
 const App: React.FC = () => {
   const [habits, setHabits] = useState<Habit[]>(loadHabits());
   const [selectedView, setSelectedView] = useState<string>("tracker");
   const [showAbout, setShowAbout] = useState<boolean>(false);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-
-  const toggleTheme = () => {
-    setDarkMode((prevMode) => !prevMode);
-    // Additional logic to apply the theme can be added here
-  };
 
   useEffect(() => {
     // Check localStorage to determine if the user has seen the About modal
@@ -88,31 +80,30 @@ const App: React.FC = () => {
         }}
       >
         <div style={{ textAlign: "center" }}>
-        <h1
-  style={{
-    margin: "1rem 0.5rem",
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    fontSize: "300%",
-    textAlign: "center"
-  }}
->
-  Mindful Metrics
-</h1>
-
-  <h2
-    style={{
-      margin: "1rem 0",
-      marginLeft: "auto",
-      marginRight: "auto",
-      width: "80%", // or any width you prefer
-    }}
-  >
-    Empowering your journey to a mindful lifestyle with AI-driven habit insights
-    and personalized guidance.
-  </h2>
-</div>
+          <h1
+            style={{
+              margin: "1rem 0.5rem",
+              width: "100%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              fontSize: "300%",
+              textAlign: "center",
+            }}
+          >
+            Mindful Metrics
+          </h1>
+          <h2
+            style={{
+              margin: "1rem 0",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: "80%",
+            }}
+          >
+            Empowering your journey to a mindful lifestyle with AI-driven habit insights
+            and personalized guidance.
+          </h2>
+        </div>
         <ThemeToggle />
       </header>
       {showAbout && (
@@ -154,30 +145,30 @@ const App: React.FC = () => {
       </div>
       <ReminderToast habits={habits} />
       <footer
-  style={{
-    position: "fixed",
-    bottom: 0,
-    width: "100%",
-    backgroundColor: "var(--header-bg)",
-    color: "var(--header-text)",
-    textAlign: "center",
-    padding: "0.5rem 0",
-    boxSizing: "border-box",
-  }}
->
-  <p style={{ margin: 0 }}>
-    Crafted with ❤️ and fueled by ☕,{" "}
-    <a
-      href="https://x.com/DivsinghDev"
-      target="_blank"
-      rel="noreferrer"
-      style={{ textDecoration: "none", color: "var(--link-color)" }}
-    >
-      Divya
-    </a>{" "}
-    presents this creation.
-  </p>
-</footer>
+        style={{
+          position: "fixed",
+          bottom: 0,
+          width: "100%",
+          backgroundColor: "var(--header-bg)",
+          color: "var(--header-text)",
+          textAlign: "center",
+          padding: "0.5rem 0",
+          boxSizing: "border-box",
+        }}
+      >
+        <p style={{ margin: 0 }}>
+          Crafted with ❤️ and fueled by ☕,{" "}
+          <a
+            href="https://x.com/DivsinghDev"
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: "none", color: "var(--link-color)" }}
+          >
+            Divya
+          </a>{" "}
+          presents this creation.
+        </p>
+      </footer>
     </div>
   );
 };
