@@ -90,7 +90,7 @@ These components contribute to a polished, professional, and cohesive design, en
 1. **Clone the Repository:**
 
    ```
-   git clone https://github.com/your-username/habit-tracker.git
+   git clone https://github.com/Divya4879/habit-tracker.git
    cd habit-tracker
    ```
    
