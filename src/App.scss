@@ -1,6 +1,21 @@
+/* Import Kendo Default Theme */
 @import '~@progress/kendo-theme-default/scss/all';
 
+/* Global Variables and Themes */
 :root {
+  /* Base Theme Variables */
+  --bg-color: #f0f8ff; /* AliceBlue background */
+  --text-color: #002366; /* Dark blue text */
+  --primary-color: #007acc; /* Strong blue */
+  --secondary-color: #cce5ff; /* Light blue */
+  --header-bg: #007acc;
+  --header-text: #e3eaff;
+  --window-bg: #e6f2ff; /* Very light blue */
+  --window-border: #b3d7ff;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-text: #002366;
+
+  /* Additional theme variables for light/dark modes */
   --header-bg-light: #e8e9fd;
   --header-text-light: #000000;
   --header-bg-dark: #333333;
@@ -13,6 +28,20 @@
   --primary-color-dark: #1a73e8;
 }
 
+body.dark-mode {
+  --bg-color: #001f3f; /* Dark navy */
+  --text-color: #f0f8ff; /* AliceBlue */
+  --primary-color: #80bdff; /* Light blue */
+  --secondary-color: #335c81; /* Muted blue */
+  --header-bg: #005a99;
+  --header-text: #f0f8ff;
+  --window-bg: #002f4b;
+  --window-border: #004c70;
+  --chart-tooltip-bg: #001f3f;
+  --chart-tooltip-text: #f0f8ff;
+}
+
+/* Theme Classes */
 .light-theme {
   --header-bg: var(--header-bg-light);
   --header-text: var(--header-text-light);
@@ -29,10 +58,27 @@
   --primary-color: var(--primary-color-dark);
 }
 
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+h1 {
+  color: #01070e;
+}
+
+header,
 .app-header {
   padding: 1rem;
   background-color: var(--header-bg);
   color: var(--header-text);
+}
+
+.app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,15 +90,15 @@
 }
 
 .view-container {
-  padding: 1rem;
   max-width: 1000px;
   width: 100%;
+  padding: 1rem;
   margin: 0 auto;
 }
 
 footer {
   position: fixed;
-  bottom: 0; // Ensure this is a valid value
+  bottom: 0;
   width: 100%;
   background-color: var(--header-bg);
   color: var(--header-text);
@@ -61,7 +107,53 @@ footer {
   box-sizing: border-box;
 }
 
-/* AboutModal styles */
+/* Kendo and Component Styles */
+.k-window {
+  border: 1px solid #e8eaf3;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.k-button {
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  border-color: #80bdff;
+}
+
+.k-button:hover {
+  background-color: #007acc;
+  color: #fff;
+}
+
+/* Inputs and Labels */
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+input.k-textbox {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid #b2bde8;
+  border-radius: 4px;
+}
+
+/* Confirmation Modal */
+.confirmation-modal__content {
+  padding: 1rem;
+  min-width: 300px;
+}
+
+.confirmation-modal__actions {
+  text-align: right;
+}
+
+.confirmation-modal__button--cancel {
+  margin-right: 0.5rem;
+}
+
+/* About Modal Styles */
 .about-modal {
   position: fixed;
   top: 45%;
@@ -86,12 +178,14 @@ footer {
 
 .about-modal__content {
   padding: 1rem;
-  padding-top: 1rem;
 }
 
-/* Optional: use this class to style highlighted text */
+/* Highlighted Text */
 .highlight {
   color: var(--primary-color);
 }
+
+
+
 
 
