@@ -1,9 +1,13 @@
 // src/components/FeedbackSection.tsx
 import React, { useState } from "react";
 import { Habit } from "../types";
+import { ProgressBar } from "@progress/kendo-react-progressbars";
+import { Popup } from "@progress/kendo-react-popup";
 
 const API_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
-const API_KEY = process.env.REACT_APP_API_KEY || "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";
+const API_KEY =
+  process.env.REACT_APP_API_KEY ||
+  "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";
 const MODEL_NAME = "llama3-8b-8192";
 
 // Simple markdown converter for bold (**text**)
@@ -20,7 +24,25 @@ const FeedbackSection: React.FC<FeedbackSectionProps> = ({ habits }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
+  // States for progress simulation
+  const [progress, setProgress] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+
+  // States for click management & popup
+  const [clickTimestamps, setClickTimestamps] = useState<number[]>([]);
+  const [showPopup, setShowPopup] = useState(false);
+
   const refreshFeedback = async () => {
+    // start progress simulation
+    setProgress(0);
+    setShowProgress(true);
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 95) return prev + Math.random() * 5;
+        return prev;
+      });
+    }, 200);
+
     setLoading(true);
     setErrorMessage("");
     try {
@@ -84,7 +106,9 @@ Use ** for bold text where appropriate.`,
           feedbackText = data.feedback;
         }
         if (feedbackText) {
-          const feedbackArray = feedbackText.split("\n").filter((line) => line.trim() !== "");
+          const feedbackArray = feedbackText
+            .split("\n")
+            .filter((line) => line.trim() !== "");
           setFeedback(feedbackArray);
         } else {
           setFeedback([]);
@@ -96,6 +120,26 @@ Use ** for bold text where appropriate.`,
       setFeedback([]);
     }
     setLoading(false);
+    clearInterval(progressInterval);
+    setProgress(100);
+    setTimeout(() => {
+      setShowProgress(false);
+    }, 500);
+  };
+
+  // Handler to manage rapid clicks and show popup if needed.
+  const handleGenerateFeedbackClick = () => {
+    const now = Date.now();
+    const newTimestamps = [...clickTimestamps.filter((t) => now - t < 10000), now];
+    setClickTimestamps(newTimestamps);
+    if (newTimestamps.length >= 3) {
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+      return;
+    }
+    refreshFeedback();
   };
 
   const handleClose = () => {
@@ -136,6 +180,31 @@ Use ** for bold text where appropriate.`,
       >
         Your customized AI-powered feedback
       </h1>
+      {showProgress && (
+        <div style={{ position: "relative", margin: "1rem" }}>
+          <ProgressBar
+            value={progress}
+            style={{
+              backgroundColor: "var(--bg-color)",
+              height: "20px",
+              fontWeight:'bold'
+            }}
+          />
+          <span
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "0",
+              transform: "translateX(-50%)",
+              fontWeight: "bold",
+              color: "white",
+              lineHeight: "20px",
+            }}
+          >
+            {Math.round(progress)}%
+          </span>
+        </div>
+      )}
       <div style={{ textAlign: "center", marginBottom: "1rem" }}>
         <button
           style={{
@@ -146,7 +215,7 @@ Use ** for bold text where appropriate.`,
             marginRight: "0.5rem",
           }}
           className="k-button k-primary"
-          onClick={refreshFeedback}
+          onClick={handleGenerateFeedbackClick}
         >
           Generate Feedback
         </button>
@@ -166,14 +235,41 @@ Use ** for bold text where appropriate.`,
         )}
       </div>
       {loading ? (
-        <p style={{ textAlign: "center", fontWeight: "bold" }}>Loading feedback...</p>
+        <p style={{ textAlign: "center", fontWeight: "bold" }}>
+          Loading feedback...
+        </p>
       ) : errorMessage ? (
         <p style={{ color: "red", textAlign: "center" }}>{errorMessage}</p>
       ) : (
         <div>{feedback.map((line, index) => renderFeedbackLine(line, index))}</div>
+      )}
+      {showPopup && (
+        <Popup
+        
+        show={showPopup}
+        popupClass="k-popup-transparent"
+        style={{
+          color:'var(--text-color)',
+          marginTop:'40vh',
+          marginRight:'20%',
+          marginLeft:'20%',
+          zIndex: 1000,
+          padding: '5rem',
+          background: 'whitesmoke',
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          boxShadow: '0px 0px 10px rgba(0,0,0,0.25)'
+          }}
+        >
+          <strong>
+            Slow down buddy, are you even reading the feedback generated?
+          </strong>
+        </Popup>
       )}
     </div>
   );
 };
 
 export default FeedbackSection;
+
+

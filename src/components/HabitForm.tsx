@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Window } from "@progress/kendo-react-dialogs";
 import { DropDownList, MultiSelect } from "@progress/kendo-react-dropdowns";
+import { Label } from "@progress/kendo-react-labels";
+import { Input } from "@progress/kendo-react-inputs";
 import { Habit } from "../types";
 
 // Helper function for consistent local date formatting (YYYY-MM-DD)
@@ -131,23 +133,23 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
     >
       <div style={{ padding: "1rem", minWidth: "400px" }}>
         <div style={{ marginBottom: "1rem" }}>
-          <label>Habit/Action</label>
-          <input
+          <Label>Habit/Action</Label>
+          <Input
             type="text"
             className="k-textbox"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value as string)}
             style={{ width: "100%" }}
           />
           {errors.name && <div style={{ color: "red" }}>{errors.name}</div>}
         </div>
         <div style={{ marginBottom: "1rem" }}>
-          <label>Estimated Time Needed</label>
-          <input
+          <Label>Estimated Time Needed</Label>
+          <Input
             type="text"
             className="k-textbox"
             value={estimatedTime}
-            onChange={(e) => setEstimatedTime(e.target.value)}
+            onChange={(e) => setEstimatedTime(e.target.value as string)}
             style={{ width: "100%" }}
           />
           {errors.estimatedTime && <div style={{ color: "red" }}>{errors.estimatedTime}</div>}
@@ -192,8 +194,8 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
             </label>
             {enableReminder && (
               <div>
-                <label>Reminder Minutes Before Midnight</label>
-                <input
+                <Label>Reminder Minutes Before Midnight</Label>
+                <Input
                   type="number"
                   className="k-textbox"
                   value={reminderMinutes}
@@ -218,4 +220,3 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
 };
 
 export default HabitForm;
-
