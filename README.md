@@ -4,6 +4,9 @@ Check it out at:- [Mindful Metrics](https://mindful-metrics.netlify.app)
 
 **Mindful Metrics** is a modern habit tracker and self-improvement application designed to empower users on their journey to a balanced and mindful lifestyle. It leverages the power of KendoReact components to deliver a seamless and visually appealing UI, along with AI-driven insights that help you optimize your daily habits.
 
+![screencapture-mindful-metrics-netlify-app-2025-03-24-06_11_45](https://github.com/user-attachments/assets/50c43515-7903-4fa3-b5eb-7d93d543ca10)
+
+
 ## Project Overview
 
 **Mindful Metrics** is a labor of passion and dedication, developed solely by me, Divya. This project aims to provide users with a comprehensive tool to cultivate mindfulness and achieve personal growth through effective habit tracking and insightful analytics. By integrating advanced technologies and thoughtful design, Mindful Metrics empowers individuals to build positive habits, reflect on their progress, and make informed decisions to enhance their well-being.
@@ -52,26 +55,46 @@ Embark on your journey to mindfulness and personal growth with Mindful Metrics, 
 
 Mindful Metrics makes extensive use of KendoReact components to build its modern UI. Here are more than 10 of the KendoReact components integrated into the project:
 
-1. **KendoReact Grid:**  
-   Displays and manages habit data efficiently.
-2. **KendoReact Chart:**  
-   Renders interactive charts for analyzing habit streaks.
-3. **ChartSeries & ChartSeriesItem:**  
-   Used to plot data within the charts.
-4. **ChartCategoryAxis & ChartCategoryAxisItem:**  
-   Configures the x-axis for both weekly and monthly streak views.
-5. **ChartValueAxis & ChartValueAxisItem:**  
-   Sets up the y-axis for the charts.
-6. **ChartTooltip:**  
-   Provides custom tooltips that display detailed information, including date and duration.
-7. **KendoReact DropDownList:**  
-   Enables selection for time period and habit filtering in the dashboard.
-8. **KendoReact MultiSelect:**  
-   Allows users to select multiple tags when creating or editing habits.
-9. **KendoReact Window (Dialogs):**  
-   Used for modal dialogs in forms (e.g., HabitForm and AboutModal).
-10. **KendoReact Button:**  
-    Provides consistent and styled button components across the UI.
+1. **@progress/kendo-react-dialogs**
+   - **Window**: Provides a floating panel or modal dialog for advanced functionalities, such as displaying forms (e.g., HabitForm, AboutModal) or informational panels.
+   - **Dialog**: Used to prompt users for input or display important messages in a modal dialog.
+   - **DialogActionsBar**: Supplies a styled container for action buttons within dialogs, ensuring consistency and clear call-to-action placements.
+
+2. **@progress/kendo-react-buttons**
+   - **Button**: Offers consistently styled and themed buttons throughout the UI for actions like submitting forms, filtering data, or triggering dialogs.
+
+3. **@progress/kendo-react-dropdowns**
+   - **DropDownList**: Enables users to select items (such as time periods or habit filters) from a dropdown menu, simplifying navigation and data selection.
+   - **MultiSelect**: Allows for the selection of multiple tags (e.g., when creating or editing habits), enhancing filtering and categorization capabilities.
+
+4. **@progress/kendo-react-grid**
+   - **Grid**: Displays and manages habit data efficiently in a tabular format, supporting features like sorting, filtering, and paging.
+   - **GridColumn (aliased as Column)**: Defines individual columns within the grid to map different fields of habit data, ensuring clarity and structure.
+
+5. **@progress/kendo-react-layout**
+   - **TabStrip**: Organizes content into a tabbed interface, enabling users to switch between different views (such as weekly vs. monthly metrics).
+   - **TabStripTab**: Represents each tab within the TabStrip, encapsulating specific sets of data or functionalities.
+
+6. **@progress/kendo-react-charts**
+   - **Chart**: Renders interactive and visually appealing charts for analyzing habit streaks and performance.
+   - **ChartSeries & ChartSeriesItem**: Plot data points within the charts to display trends over time, such as habit progress or duration changes.
+   - **ChartLegend**: Provides a legend that explains the chart's series and color coding, improving data comprehension.
+   - **ChartCategoryAxis & ChartCategoryAxisItem**: Configures the x-axis of the charts for clear labeling of time periods (e.g., weekly or monthly views).
+   - **ChartValueAxis & ChartValueAxisItem**: Sets up the y-axis to represent numerical values such as habit duration or frequency.
+
+7. **@progress/kendo-react-inputs**
+   - **Input**: A basic text input field used in forms to capture user input (e.g., habit names or search queries).
+   - **NumericTextBox**: Allows for numeric input with increment/decrement buttons, ideal for setting durations or other numerical values.
+   - **TextArea**: Enables multi-line text input for more detailed user entries, such as habit descriptions or notes.
+
+8. **@progress/kendo-react-labels**
+   - **Label**: Offers styled label components that display textual hints or form field labels consistently across the UI.
+
+9. **@progress/kendo-react-progressbars**
+   - **ProgressBar**: Visualizes progress indicators (e.g., tracking habit streaks or processing states) with customizable styling to match the application’s theme.
+
+10. **@progress/kendo-react-popup**
+    - **Popup**: Renders an anchored popup container that displays additional contextual information or actions, enhancing user interaction without disrupting the main layout.
 
 And more components.
 
