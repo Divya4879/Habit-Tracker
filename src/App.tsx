@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useEffect } from "react";
 import TopNavigation from "./components/NavigationPanel";
 import ThemeToggle from "./components/ThemeToggle";
@@ -19,13 +18,11 @@ const App: React.FC = () => {
   const [showAbout, setShowAbout] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check localStorage to determine if the user has seen the About modal
     const seenAbout = localStorage.getItem("seenAbout") === "true";
     if (!seenAbout) {
       setShowAbout(true);
       localStorage.setItem("seenAbout", "true");
     }
-    // Save the current habits to localStorage
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
 
@@ -111,7 +108,6 @@ const App: React.FC = () => {
           }}
         />
       )}
-      {/* Top section with navigation on left and AI feedback on right */}
       <div style={{ display: "flex", width: "100vw", boxSizing: "border-box" }}>
         <div style={{ flex: "0 0 18%", padding: "1rem" }}>
           <TopNavigation selectedView={selectedView} onSelectView={setSelectedView} />
@@ -120,7 +116,7 @@ const App: React.FC = () => {
           <FeedbackSection habits={habits} />
         </div>
       </div>
-      {/* Main content area */}
+
       <div
         style={{
           padding: "1rem",

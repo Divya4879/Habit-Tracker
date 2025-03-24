@@ -1,9 +1,9 @@
-/* Import Kendo Default Theme */
+
 @import '~@progress/kendo-theme-default/scss/all';
 
-/* Global Variables and Themes */
+
 :root {
-  /* Base Theme Variables */
+
   --bg-color: #f0f8ff; /* AliceBlue background */
   --text-color: #002366; /* Dark blue text */
   --primary-color: #007acc; /* Strong blue */
@@ -184,8 +184,3 @@ input.k-textbox {
 .highlight {
   color: var(--primary-color);
 }
-
-
-
-
-
