@@ -1,4 +1,3 @@
-// src/views/HabitStreakDetailView.tsx
 import React, { useState } from "react";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
 import {
@@ -21,9 +20,9 @@ interface HabitStreakDetailViewProps {
 const HabitStreakDetailView: React.FC<HabitStreakDetailViewProps> = ({ habits }) => {
   const [selectedHabit, setSelectedHabit] = useState<Habit | null>(habits.length > 0 ? habits[0] : null);
   const categories = Array.from({ length: 30 }, (_, i) => (i + 1).toString());
-  // Convert streakHistory to binary: 1 if value > 0, else 0.
+
   const binaryData = selectedHabit ? selectedHabit.streakHistory.map(val => (val > 0 ? 1 : 0)) : [];
-  // Determine color based on first tag:
+
   const habitColor =
     selectedHabit && selectedHabit.tags && selectedHabit.tags.length > 0
       ? TAGS.find(t => t.text.toLowerCase() === selectedHabit.tags[0].toLowerCase())?.color || "#007acc"

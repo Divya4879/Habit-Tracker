@@ -1,4 +1,3 @@
-// src/views/FocusPieChart.tsx
 import React from "react";
 import { Chart, ChartSeries, ChartSeriesItem, ChartLegend } from "@progress/kendo-react-charts";
 import { Habit } from "../types";
@@ -10,7 +9,6 @@ interface FocusPieChartProps {
 }
 
 const FocusPieChart: React.FC<FocusPieChartProps> = ({ habits }) => {
-  // Group habits by tag (case-insensitive)
   const tagGroups: { [tag: string]: string[] } = {};
   habits.forEach((habit) => {
     habit.tags.forEach((tag) => {
@@ -22,7 +20,6 @@ const FocusPieChart: React.FC<FocusPieChartProps> = ({ habits }) => {
     });
   });
 
-  // Build data array from tagGroups
   const data = Object.keys(tagGroups).map((tagKey) => {
     const tagInfo = TAGS.find((t) => t.text.toLowerCase() === tagKey);
     return {
@@ -44,7 +41,6 @@ const FocusPieChart: React.FC<FocusPieChartProps> = ({ habits }) => {
             field="count"
             categoryField="category"
             colorField="color"
-            // Remove labels property entirely so no slice labels are shown
             tooltip={
               {
                 visible: true,

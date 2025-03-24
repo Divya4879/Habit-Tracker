@@ -1,4 +1,3 @@
-// src/views/StreakView.tsx
 import React, { useState } from "react";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
 import {
@@ -14,14 +13,12 @@ import { Habit } from "../types";
 import { TAGS } from "../components/HabitForm";
 import "@progress/kendo-theme-default/dist/all.css";
 
-// Helper: Returns ordinal suffix for a day number
 const getOrdinal = (n: number): string => {
   const s = ["th", "st", "nd", "rd"],
     v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 };
 
-// Helper: Formats a Date object as "21st March, 2025"
 const formatDate = (date: Date): string => {
   const day = date.getDate();
   const month = date.toLocaleString("default", { month: "long" });
@@ -29,7 +26,6 @@ const formatDate = (date: Date): string => {
   return `${getOrdinal(day)} ${month}, ${year}`;
 };
 
-// Helper: Get last 30 Date objects (from 29 days ago to today)
 const getLast30Dates = (): Date[] => {
   const dates: Date[] = [];
   const today = new Date();
@@ -49,29 +45,26 @@ const StreakView: React.FC<StreakViewProps> = ({ habits }) => {
   const [selectedHabit, setSelectedHabit] = useState<Habit | null>(habits.length > 0 ? habits[0] : null);
   const [viewType, setViewType] = useState<"weekly" | "monthly">("weekly");
 
-  // Weekly view: x-axis labels "Day 1", "Day 2", ... for last 7 days.
   const weeklyCategories = Array.from({ length: 7 }, (_, i) => `Day ${i + 1}`);
-  // Monthly view: x-axis labels "1", "2", ... for last 30 days.
+
   const monthlyCategories = Array.from({ length: 30 }, (_, i) => `${i + 1}`);
 
-  // Convert streak history to binary for weekly view.
   const getWeeklyData = (habit: Habit): number[] => {
     const last7 = habit.streakHistory.slice(-7);
     return last7.map(val => (val > 0 ? 1 : 0));
   };
 
-  // Convert streak history to binary for monthly view.
   const getMonthlyData = (habit: Habit): number[] => {
     const last30 = habit.streakHistory.slice(-30);
     return last30.map(val => (val > 0 ? 1 : 0));
   };
 
-  const last30Dates = getLast30Dates(); // Array of Date objects
-  // For tooltip, format the date when user hovers over a bar.
+  const last30Dates = getLast30Dates(); 
+
   const getTooltipContent = (index: number): string => {
     const date = last30Dates[index];
     const formatted = formatDate(date);
-    // Save to local storage
+   
     localStorage.setItem("hoveredDate", formatted);
     return `<span style="color: var(--text-color)">${formatted}</span>`;
   };
@@ -140,7 +133,7 @@ const StreakView: React.FC<StreakViewProps> = ({ habits }) => {
               tooltip={
                 {
                   visible: true,
-                  // Use "template" property and cast as any to bypass type checking:
+                  
                   template: (e: any) => getTooltipContent(e.point.index)
                 } as any
               }

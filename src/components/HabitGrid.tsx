@@ -16,7 +16,6 @@ const HabitGrid: React.FC<HabitGridProps> = ({ habits, onEdit, onDelete, onMarkC
   const [habitToDelete, setHabitToDelete] = useState<Habit | null>(null);
   const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0]);
 
-  // Function to capitalize the first letter of a string
   const capitalizeFirstLetter = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -60,16 +59,14 @@ const HabitGrid: React.FC<HabitGridProps> = ({ habits, onEdit, onDelete, onMarkC
     setHabitToDelete(null);
   };
 
-  // Set up an interval to check for date changes
   useEffect(() => {
     const intervalId = setInterval(() => {
       const newDate = new Date().toISOString().split('T')[0];
       if (newDate !== currentDate) {
         setCurrentDate(newDate);
       }
-    }, 60000); // Check every minute
+    }, 60000); 
 
-    // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
   }, [currentDate]);
 

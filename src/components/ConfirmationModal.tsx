@@ -1,4 +1,3 @@
-// src/components/ConfirmationModal.tsx
 import React from "react";
 import { Window } from "@progress/kendo-react-dialogs";
 

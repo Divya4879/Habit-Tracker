@@ -1,4 +1,3 @@
-// src/components/FeedbackSection.tsx
 import React, { useState } from "react";
 import { Habit } from "../types";
 import { ProgressBar } from "@progress/kendo-react-progressbars";
@@ -10,7 +9,6 @@ const API_KEY =
   "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";
 const MODEL_NAME = "llama3-8b-8192";
 
-// Simple markdown converter for bold (**text**)
 const convertMarkdownToHTML = (text: string): string => {
   return text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>").replace(/\*/g, "");
 };
@@ -24,16 +22,13 @@ const FeedbackSection: React.FC<FeedbackSectionProps> = ({ habits }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  // States for progress simulation
   const [progress, setProgress] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
 
-  // States for click management & popup
   const [clickTimestamps, setClickTimestamps] = useState<number[]>([]);
   const [showPopup, setShowPopup] = useState(false);
 
   const refreshFeedback = async () => {
-    // start progress simulation
     setProgress(0);
     setShowProgress(true);
     const progressInterval = setInterval(() => {
@@ -127,7 +122,6 @@ Use ** for bold text where appropriate.`,
     }, 500);
   };
 
-  // Handler to manage rapid clicks and show popup if needed.
   const handleGenerateFeedbackClick = () => {
     const now = Date.now();
     const newTimestamps = [...clickTimestamps.filter((t) => now - t < 10000), now];

@@ -1,4 +1,3 @@
-// src/views/CompletionPieChart.tsx
 import React from "react";
 import {
   Chart,
@@ -14,10 +13,8 @@ interface CompletionPieChartProps {
 }
 
 const CompletionPieChart: React.FC<CompletionPieChartProps> = ({ habits }) => {
-  // Use local date string (if you need local time, consider adjusting accordingly)
   const todayStr = new Date().toISOString().split("T")[0];
 
-  // Filter habits based on whether they were completed today.
   const completedHabits = habits.filter(
     (habit) => habit.completedDate === todayStr
   );
@@ -25,7 +22,6 @@ const CompletionPieChart: React.FC<CompletionPieChartProps> = ({ habits }) => {
     (habit) => habit.completedDate !== todayStr
   );
 
-  // Aggregate total estimated time for completed and pending habits.
   const totalTimeCompleted = completedHabits.reduce(
     (acc, habit) => acc + Number(habit.estimatedTime),
     0

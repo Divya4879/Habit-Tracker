@@ -1,4 +1,3 @@
-// src/components/HabitForm.tsx
 import React, { useState, useEffect } from "react";
 import { Window } from "@progress/kendo-react-dialogs";
 import { DropDownList, MultiSelect } from "@progress/kendo-react-dropdowns";
@@ -6,7 +5,6 @@ import { Label } from "@progress/kendo-react-labels";
 import { Input } from "@progress/kendo-react-inputs";
 import { Habit } from "../types";
 
-// Helper function for consistent local date formatting (YYYY-MM-DD)
 const getLocalDateStr = (date: Date = new Date()): string => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -47,8 +45,6 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
   const [errors, setErrors] = useState<{ name?: string; estimatedTime?: string }>({});
   const [completedDate, setCompletedDate] = useState<string | null>(habit?.completedDate || null);
 
-  // Check every 5 minutes if the stored completion date is from a previous day.
-  // If so, reset the status to "Pending" so the mark-as-completed option becomes available again.
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = getLocalDateStr();
@@ -85,7 +81,6 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
       setErrors(validationErrors);
       return;
     }
-    // Set deadline to midnight (local device time)
     const midnight = new Date();
     midnight.setHours(24, 0, 0, 0);
 
@@ -104,7 +99,6 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
       completedDate: habit?.completedDate,
     };
 
-    // Update streak if habit is marked as completed and wasn't already marked today
     if (status === "Completed") {
       if (!completedDate || completedDate !== todayStr) {
         newHabit.streak = (habit?.streak || 0) + 1;
@@ -119,7 +113,6 @@ const HabitForm: React.FC<HabitFormProps> = ({ habit, onSave, onClose, existingH
       }
     }
 
-    // Persist the updated habit in localStorage.
     localStorage.setItem("habit_" + newHabit.id, JSON.stringify(newHabit));
     onSave(newHabit);
   };

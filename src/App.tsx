@@ -66,6 +66,7 @@ const App: React.FC = () => {
     <div style={{ width: "100vw", overflowX: "hidden", paddingBottom: "60px" }}>
       <header
         style={{
+          
           padding: "1rem",
           backgroundColor: "var(--header-bg)",
           color: "var(--header-text)",

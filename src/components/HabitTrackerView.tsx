@@ -1,4 +1,3 @@
-// src/views/HabitTrackerView.tsx
 import React, { useState } from "react";
 import HabitGrid from "./HabitGrid";
 import HabitForm from "./HabitForm";

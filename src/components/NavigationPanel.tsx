@@ -1,4 +1,3 @@
-// src/components/NavigationPanel.tsx
 import React from "react";
 import { TabStrip, TabStripTab } from "@progress/kendo-react-layout";
 import { useMediaQuery } from "react-responsive";

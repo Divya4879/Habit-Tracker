@@ -1,4 +1,3 @@
-// src/components/AboutModal.tsx
 import React from "react";
 import { Window } from "@progress/kendo-react-dialogs";
 import { Button } from "@progress/kendo-react-buttons";
@@ -24,13 +23,11 @@ const AboutModal: React.FC<AboutModalProps> = ({ onClose }) => {
         height: "60vh"
       }}
     >
-      {/* Custom close button in the top-right corner */}
       <div style={{ position: "absolute", top: "10px", right: "10px" }}>
         <Button 
           onClick={onClose}
           icon="close"
-          fillMode="flat" // Use fillMode for button appearance
-        //   themeColor="primary" // Adjust themeColor as needed
+          fillMode="flat" 
           style={{ fontSize: "1.2rem", color: "var(--header-bg)" }}
         />
       </div>
